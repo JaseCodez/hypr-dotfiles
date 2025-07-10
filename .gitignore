@@ -1,0 +1,18 @@
+# Ignore everything
+/*
+**/.env
+
+# Files not to ignore 
+!/.gitignore
+!/starship.toml
+!/wofi/
+!/wlogout/
+!/waybar/ 
+!/swaylock/ 
+!/nvim/ 
+!/mako/ 
+!/kitty/ 
+!/hypr/ 
+
+
+

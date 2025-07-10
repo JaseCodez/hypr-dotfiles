@@ -1,0 +1,120 @@
+add_newline = false
+
+format = """$shlvl$cmd_duration$username$container$hostname$localip$directory$all$fill$time$git_branch$git_state$git_status$git_metrics$git_commit
+$jobs$status$battery$character"""
+# [───────────────────────────────](white)
+# $all
+# """
+
+
+# Replace the "❯" symbol in the prompt with "❯❯"
+[character]
+success_symbol = "[V: ℝⁿ->](bold green)"
+error_symbol = "[W: ℂⁿ->](bold red)"
+
+[env_var.DISPLAY]
+variable = "DISPLAY"
+default = ""
+disabled = true
+
+[fill]
+symbol = " "
+
+[line_break]
+disabled = true
+[status]
+symbol = ""
+disabled = false
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = false
+
+# Disable the AWS module.
+[aws]
+disabled = true
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💀"
+
+# Directory setttings
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style) "
+truncation_length = 4
+truncate_to_repo = false
+truncation_symbol = "…/"
+read_only = " Read Only "
+read_only_style = "red"
+
+[username]
+disabled = false
+
+[hostname]
+ssh_only = true
+format =  "[$hostname](bold red) "
+
+
+[sudo]
+disabled = false
+style = "blue"
+format = "with [sudo]($style) "
+
+[git_status]
+disabled = false
+style = "bold red"
+format = '([\[](bold dimmed)[$all_status$ahead_behind]($style)[\]](bold dimmed)) '
+
+[git_metrics]
+disabled = false
+format = "([\\[](dimmed bold)[+$added]($added_style) [-$deleted]($deleted_style)[\\]](dimmed bold)) "
+
+[time]
+disabled = false
+format = "[$time]($style) "
+time_format = "%R"
+
+[nix_shell]
+disabled = false
+symbol = '⛄ '
+format = 'via [$symbol$state( \($name\))]($style) '
+
+
+[container]
+style = "bold red"
+format = '[\[$name\]]($style) '
+
+[shlvl]
+disabled = true
+format = "[$shlvl levels down\n]($style)"
+# format = "🐚"
+# repeat = true
+style = "bold red"
+threshold = 2
+
+[localip]
+disabled = false
+format = "[$localipv4]($style) "
+ssh_only = true
+
+[jobs]
+format = "[$symbol]($style) "
+
+[python]
+# format = 'via [\(py:${pyenv_prefix}(${version}\) )(\($virtualenv\) )]($style)'
+version_format = 'v${major}.${minor}.${patch}'
+format = 'via [py (${version} )(\(${virtualenv}${pyenv_prefix}\) )]($style)'
+
+[cmake]
+disabled = true
+symbol = "cmake:"
+
+[c]
+disabled = true
+
+[rust]
+symbol = "rust:"
+
+[os]
+disabled = true
