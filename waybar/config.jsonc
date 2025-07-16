@@ -101,8 +101,8 @@
         "tooltip" : true,
         "format" : "{}",
         "interval" : 3600,
-        "exec" : "~/.config/waybar/scripts/waybar-wttr.py",
-        "return-type" : "json"
+        "return-type" : "json",
+        "exec" : "~/.config/waybar/scripts/venv/bin/python3 ~/.config/waybar/scripts/waybar-wttr.py"
     },
 
     "tray": {

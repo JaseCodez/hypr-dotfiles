@@ -1,5 +1,8 @@
 require("lazy").setup({
   {
+    "catppuccin/nvim"
+  }, 
+  {
     "AstroNvim/AstroNvim",
     version = "^5", -- Remove version tracking to elect for nightly AstroNvim
     import = "astronvim.plugins",
@@ -13,7 +16,7 @@ require("lazy").setup({
   },
 } --[[@as LazySpec]], {
   -- Configure any other `lazy.nvim` configuration options here
-  install = { colorscheme = { "astrotheme", "habamax" } },
+  install = { colorscheme = { "astrotheme", "habamax", "catppuccin" } },
   ui = { backdrop = 100 },
   performance = {
     rtp = {

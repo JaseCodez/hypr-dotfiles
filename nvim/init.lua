@@ -28,18 +28,25 @@ require "lazy_setup"
 
 require "polish"
 
-vim.cmd("colorscheme sorbet")
+vim.cmd("colorscheme catppuccin")
 vim.cmd("hi Normal guibg=NONE ctermbg=NONE ")
 
 -- In your init.lua or relevant config file:
 
 -- Ensure Neo-tree setup with the Sorbet theme
 require("neo-tree").setup({
+  filesystem = {
+    filtered_items = {
+      visible = true, -- This is what you want: If you set this to `true`, all "hide" just mean "dimmed out"
+      hide_dotfiles = false,
+      hide_gitignored = true,
+    }
+  },
   -- Set Neo-tree to use the Sorbet theme
   window = {
     position = "left",  -- Customize position if needed
     width = 40,         -- Adjust window width if desired
-    theme = "sorbet",   -- Set the Neo-tree theme to "sorbet"
+    theme = "catppuccin",   -- Set the Neo-tree theme to "sorbet"
   },
   -- Other Neo-tree settings...
 })
@@ -51,7 +58,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
     -- Check if the current buffer is a Neo-tree buffer
     if vim.bo.filetype == "neo-tree" then
       -- Set Neo-tree to use the sorbet theme
-      vim.cmd("colorscheme sorbet")
+      vim.cmd("colorscheme catppuccin")
       
       -- Set Normal highlight to transparent background
       vim.cmd("hi Normal guibg=NONE ctermbg=NONE")

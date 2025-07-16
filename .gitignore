@@ -4,13 +4,13 @@
 
 # Files not to ignore 
 !/.gitignore
+!/swaync
 !/starship.toml
 !/wofi/
 !/wlogout/
 !/waybar/ 
 !/swaylock/ 
 !/nvim/ 
-!/mako/ 
 !/kitty/ 
 !/hypr/ 
 

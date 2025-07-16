@@ -3,6 +3,7 @@
 import json
 import requests
 from datetime import datetime
+from environs import env
 
 WEATHER_CODES = {
     '113': '☀️ ',
@@ -57,17 +58,15 @@ WEATHER_CODES = {
 
 data = {}
 
-WEATHER_KEY = ''
-with open('.env') as f:
-    WEATHER_KEY = f.read() 
+env.read_env()
+WEATHER_KEY = env("WEATHER_KEY")
 
 
 location = requests.get("http://ipwho.is/").json()
-city_code = requests.get(f'http://dataservice.accuweather.com/locations/v1/cities/search?apikey=%20{WEATHER_KEY}&q={location['city']}').json()
+city_code = requests.get(f'http://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=%20{WEATHER_KEY}&q={location['ip']}').json()
 
 
-
-weather2 = requests.get(f"http://dataservice.accuweather.com/currentconditions/v1/{city_code[0]['Key']}?apikey=%20{WEATHER_KEY}").json()
+weather2 = requests.get(f"http://dataservice.accuweather.com/currentconditions/v1/{city_code['Key']}?apikey=%20{WEATHER_KEY}").json()
 
 weather = requests.get("https://wttr.in/?format=j1").json()
 
