@@ -57,10 +57,8 @@ tooltip label{
 #custom-power_profile,
 #custom-weather,
 #window,
-#cpu,
-#disk,
+#custom-cava, 
 #custom-updates,
-#memory,
 #clock,
 #battery,
 #pulseaudio,
@@ -81,11 +79,16 @@ tooltip label{
     border-style: solid;
 }
 
-#window, #custom-flag, #network, #custom-lock_screen, #temperature, #backlight, #custom-launch_wofi, #cpu {
+#window, #custom-flag, #network, #custom-lock_screen, #temperature, #backlight, #custom-launch_wofi {
     border-radius: 10px 0px 0px 10px;
 }
 
-#window, #custom-light_dark, #custom-power_btn, #workspaces, #pulseaudio.microphone, #battery, #disk{
+#custom-cava {
+    border-radius: 10px; 
+    margin-right: 10px;
+}
+
+#window, #custom-light_dark, #custom-power_btn, #workspaces, #pulseaudio.microphone, #battery {
     border-radius: 0px 10px 10px 0px;
     margin-right: 10px;
 }
