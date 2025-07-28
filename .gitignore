@@ -6,7 +6,6 @@
 !/.gitignore
 !/swaync
 !/starship.toml
-!/wofi/
 !/wlogout/
 !/waybar/ 
 !/swaylock/ 
@@ -14,6 +13,7 @@
 !/kitty/ 
 !/hypr/ 
 !/README.md
+!/rofi
 
 
 
