@@ -119,7 +119,7 @@
     },
 
     "backlight": {
-        "device": "intel_backlight",
+        "device": "amdgpu_bl1",
         "format": "{icon} {percent}%",
         "format-icons": ["󰃞", "󰃟", "󰃠"],
         "on-scroll-up": "brightnessctl set 1%+",
@@ -172,7 +172,7 @@
     
     "temperature": {
         "thermal-zone": 0,
-        "format": " {temperatureF}°C",
+        "format": " {temperatureC}°C",
         "critical-threshold": 70,
         "format-critical": " {temperatureC}°C",
         "on-click": "kitty --start-as=fullscreen --title btop sh -c 'btop'"
