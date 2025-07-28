@@ -16,6 +16,9 @@ ln -sf ~/.config/waybar/style/style$SWITCHTO.css ~/.config/waybar/style.css
 # Change rofi theme 
 ln -sf ~/.config/rofi/style/style$SWITCHTO.rasi ~/.config/rofi/style.rasi
 
+# Change theme of fastfetch
+ln -sf ~/.config/fastfetch/style/style$SWITCHTO.jsonc ~/.config/fastfetch/config.jsonc
+
 #set the xfce theme
 xfconf-query -c xsettings -p /Net/ThemeName -s "Adwaita$SWITCHTO"
 xfconf-query -c xsettings -p /Net/IconThemeName -s "Adwaita$SWITCHTO"
