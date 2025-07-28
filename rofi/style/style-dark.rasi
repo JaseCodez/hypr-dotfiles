@@ -1,5 +1,4 @@
 
-
 * {
     background:     #1E1F29FF;
     background-alt: #282A36FF;
@@ -8,4 +7,3 @@
     active:         #50FA7BFF;
     urgent:         #FF5555FF;
 }
-

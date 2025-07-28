@@ -13,8 +13,8 @@ fi
 #set the waybar theme
 ln -sf ~/.config/waybar/style/style$SWITCHTO.css ~/.config/waybar/style.css
 
-#set the wofi theme
-ln -sf ~/.config/wofi/style/style$SWITCHTO.css ~/.config/wofi/style.css
+# Change rofi theme 
+ln -sf ~/.config/rofi/style/style$SWITCHTO.rasi ~/.config/rofi/style.rasi
 
 #set the xfce theme
 xfconf-query -c xsettings -p /Net/ThemeName -s "Adwaita$SWITCHTO"
@@ -26,6 +26,8 @@ gsettings set org.gnome.desktop.interface icon-theme "Adwaita$SWITCHTO"
 
 #change the background image and be cool about it ;)
 hyprctl dispatch -- exec swaybg -m fill -i ~/.config/hypr/wallpapers/wallpaper$SWITCHTO.jpg
+
+
 
 #update the sddm image
 ln -sf /usr/share/sddm/themes/sdt/Backgrounds/wallpaper$SWITCHTO.jpg /usr/share/sddm/themes/sdt/wallpaper.jpg

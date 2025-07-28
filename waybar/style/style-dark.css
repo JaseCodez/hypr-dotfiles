@@ -106,7 +106,7 @@ tooltip label{
 }
 
 #network.wifi {
-    color: green;
+    color: #afd69b;
 }
 
 
@@ -116,7 +116,7 @@ tooltip label{
 }
 
 #bluetooth.on, #bluetooth.connected {
-    color: blue;
+    color: #3e8fb0;
 }
 
 #bluetooth.discovering {
