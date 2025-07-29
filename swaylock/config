@@ -7,7 +7,7 @@ show-failed-attempts
 indicator-idle-visible
 font=FantasqueSansM Nerd Font Propo
 font-size=40
-effect-blur=3x5
+effect-blur=10x10
 scaling=fill
 indicator-x-position=965
 indicator-y-position=540

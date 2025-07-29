@@ -5,7 +5,7 @@
     "exclusive": true, "passthrough": false, "gtk-layer-shell": true,
     "height": 50,
     "modules-left": ["custom/launch_wofi","hyprland/workspaces","custom/cava","custom/flag", "hyprland/window"],
-    "modules-center": ["custom/lock_screen","custom/updates","clock","custom/power_btn"],
+    "modules-center": ["custom/lock_screen","clock","custom/power_btn"],
     "modules-right": ["network", "bluetooth", "custom/power_profile","battery","backlight","pulseaudio","pulseaudio#microphone","temperature", "custom/weather", "tray","custom/light_dark"],
     
     "hyprland/window": {

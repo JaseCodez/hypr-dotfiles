@@ -5,6 +5,67 @@ import requests
 from datetime import datetime
 from environs import env
 
+data = {}
+
+env.read_env()
+WEATHER_KEY = env("WEATHER_KEY")
+
+def format_time(time):
+    return time.replace("00", "").zfill(2)
+
+
+def format_chances(hour):
+    chances = {
+        "chanceoffog": "Fog",
+        "chanceoffrost": "Frost",
+        "chanceofovercast": "Overcast",
+        "chanceofrain": "Rain",
+        "chanceofsnow": "Snow",
+        "chanceofsunshine": "Sunshine",
+        "chanceofthunder": "Thunder",
+        "chanceofwindy": "Wind"
+    }
+
+    conditions = []
+    for event in chances.keys():
+        if int(hour[event]) > 0:
+            conditions.append(chances[event]+" "+hour[event]+"%")
+    return ", ".join(conditions)
+
+
+# API Requests 
+location = requests.get("http://ipwho.is/").json()
+city_code = requests.get(f'http://dataservice.accuweather.com/locations/v1/cities/search?apikey=%20{WEATHER_KEY}&q={location['city']}').json()
+weather2 = requests.get(f"http://dataservice.accuweather.com/currentconditions/v1/{city_code[0]['Key']}?apikey=%20{WEATHER_KEY}").json()
+weather = requests.get("https://wttr.in/?format=j1").json()
+
+
+tempint = int(weather['current_condition'][0]['FeelsLikeC'])
+extrachar = ''
+if tempint > 0 and tempint < 10:
+    extrachar = '+'
+
+
+def day_night(num): 
+    day = {
+        33: "🌞 ",    # Clear
+        34: "🌤️ ",   # Mostly Clear
+        35: "⛅ ",    # Partly Cloudy
+        36: "🌥️ ",   # Intermittent Clouds
+    }
+    night = {
+        33: "🌙 ", 
+        34: "🌙☁️ ", 
+        35: "🌙☁️ ", 
+        36: "🌙☁️ ", 
+    }
+    if weather2[0]['IsDayTime']: 
+        return day[num]
+    else: 
+        return night[num]
+
+
+
 WEATHER_CODES = {
     1: "☀️ ",    # Sunny
     2: "🌞 ",    # Mostly Sunny
@@ -33,11 +94,11 @@ WEATHER_CODES = {
     29: "🌧️❄️ ", # Rain and Snow
     30: "🔥 ",    # Hot
     31: "❄️ ",    # Cold
-    32: "🌬️ ",   # Windy
-    33: "🌞 ",    # Clear
-    34: "🌤️ ",   # Mostly Clear
-    35: "⛅ ",    # Partly Cloudy
-    36: "🌥️ ",   # Intermittent Clouds
+    32: "💨 ",   # Windy
+    33: day_night(33),  
+    34: day_night(34), 
+    35: day_night(35), 
+    36: day_night(36), 
     37: "🌕🌫️ ", # Hazy Moonlight
     38: "☁️ ",    # Mostly Cloudy
     39: "🌦️ ",   # Partly Cloudy w/ Showers
@@ -47,54 +108,6 @@ WEATHER_CODES = {
     43: "🌨️ ",   # Mostly Cloudy w/ Flurries
     44: "❄️ ",    # Mostly Cloudy w/ Snow
 }
-
-data = {}
-
-env.read_env()
-WEATHER_KEY = env("WEATHER_KEY")
-
-
-location = requests.get("http://ipwho.is/").json()
-city_code = requests.get(f'http://dataservice.accuweather.com/locations/v1/cities/search?apikey=%20{WEATHER_KEY}&q={location['city']}').json()
-
-
-
-weather2 = requests.get(f"http://dataservice.accuweather.com/currentconditions/v1/{city_code[0]['Key']}?apikey=%20{WEATHER_KEY}").json()
-
-weather = requests.get("https://wttr.in/?format=j1").json()
-
-
-def format_time(time):
-    return time.replace("00", "").zfill(2)
-
-
-def format_temp(temp):
-    return (hour['FeelsLikeC']+"°").ljust(3)
-
-
-def format_chances(hour):
-    chances = {
-        "chanceoffog": "Fog",
-        "chanceoffrost": "Frost",
-        "chanceofovercast": "Overcast",
-        "chanceofrain": "Rain",
-        "chanceofsnow": "Snow",
-        "chanceofsunshine": "Sunshine",
-        "chanceofthunder": "Thunder",
-        "chanceofwindy": "Wind"
-    }
-
-    conditions = []
-    for event in chances.keys():
-        if int(hour[event]) > 0:
-            conditions.append(chances[event]+" "+hour[event]+"%")
-    return ", ".join(conditions)
-
-tempint = int(weather['current_condition'][0]['FeelsLikeC'])
-extrachar = ''
-if tempint > 0 and tempint < 10:
-    extrachar = '+'
-
 
 data['text'] = ' ' + WEATHER_CODES[weather2[0]['WeatherIcon']] + \
     " "+extrachar+str(weather2[0]['Temperature']['Metric']['Value'])+"°"
