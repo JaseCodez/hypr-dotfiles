@@ -34,11 +34,6 @@ disabled = false
 [aws]
 disabled = true
 
-[battery]
-full_symbol = "🔋"
-charging_symbol = "⚡️"
-discharging_symbol = "💀"
-
 # Directory setttings
 [directory]
 format = "[$path]($style)[$read_only]($read_only_style) "
@@ -111,7 +106,7 @@ disabled = true
 symbol = "cmake:"
 
 [c]
-disabled = true
+format = 'via [$symbol($version(-$name) )]($style)'
 
 [rust]
 symbol = "rust:"
