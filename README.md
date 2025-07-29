@@ -6,9 +6,9 @@ To use the weather app, please generate your own AccuWeather API key and put it 
 
 ## Preview 
 
-![](./preview/preview.jpg)
-![](./preview/preview-terminal.jpg)
+![](./preview/preview.png)
+![](./preview/preview-terminal.png)
 
-![](./preview/preview-dark.jpg)
-![](./preview/preview-terminal-dark.jpg)
+![](./preview/preview-dark.png)
+![](./preview/preview-terminal-dark.png)
 
