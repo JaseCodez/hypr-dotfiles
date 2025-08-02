@@ -4,35 +4,20 @@
     "mod": "dock",
     "exclusive": true, "passthrough": false, "gtk-layer-shell": true,
     "height": 50,
-    "modules-left": ["custom/launch_wofi","hyprland/workspaces","custom/cava","custom/flag", "hyprland/window"],
-    "modules-center": ["custom/lock_screen","clock","custom/power_btn"],
-    "modules-right": ["network", "bluetooth", "custom/power_profile","battery","backlight","pulseaudio","pulseaudio#microphone","temperature", "custom/weather", "tray","custom/light_dark"],
+    "modules-left": ["custom/launch_wofi","hyprland/workspaces","custom/cava","custom/flag", "custom/weather"],
+    "modules-center": ["clock"],
+    "modules-right": ["network", "bluetooth", "custom/power_profile","battery","backlight","pulseaudio","pulseaudio#microphone","temperature","custom/light_dark"],
     
-    "hyprland/window": {
-        "format": "{}"
-    },
 
     "custom/launch_wofi": {
         "format": "",
-        "on-click": "pkill wofi; wofi -n",
-        "tooltip": false
-    },
-
-    "custom/lock_screen": {
-        "format": "",
-        "on-click": "sh -c '(sleep 0.5s; swaylock)' & disown",
+        "on-click": "pkill rofi; ~/.config/rofi/launcher.sh",
         "tooltip": false
     },
 
     "custom/light_dark": {
-        "format": "󰐾",
+        "format": "󰐾 ",
         "on-click": "~/.config/waybar/scripts/baraction light",
-        "tooltip": false
-    },
-
-    "custom/power_btn": {
-        "format": "",
-        "on-click": "sh -c '(sleep 0.5s; wlogout --protocol layer-shell)' & disown",
         "tooltip": false
     },
 
@@ -86,18 +71,12 @@
         "exec" : "~/.config/waybar/scripts/venv/bin/python3 ~/.config/waybar/scripts/waybar-wttr.py"
     },
 
-    "tray": {
-        "icon-size": 18,
-        "spacing": 10
+    "clock": {
+        "format": "󰥔 {:%I:%M%p   %A, %b %d}",
+        "on-click": "kitty tty-clock -c -C 5",
+    	"height": 26
     },
 
-    "clock": {
-        //:%I:%M %p
-        "format": "{:%A %B %d %H:%M %p}",
-        "tooltip": true,
-        // : %A, %B %e %Y
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
 
     "backlight": {
         "device": "amdgpu_bl1",
@@ -114,7 +93,7 @@
             "warning": 30,
             "critical": 20
         },
-        "format": "{icon} {capacity}%",
+        "format": "{icon} {capacity}% ",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{time} {icon}",
@@ -142,9 +121,9 @@
 
     "pulseaudio#microphone": {
         "format": "{format_source}",
-        "format-source": " {volume}%",
-        "format-source-muted": "",
-        "on-click": "pamixer --default-source -t",
+        "format-source": "  ",
+        "format-source-muted": " ",
+        "on-click": "~/.config/hypr/mute_mic_script.sh",
         "on-click-right": "pavucontrol",
         "on-scroll-up": "pamixer --default-source -i 5",
         "on-scroll-down": "pamixer --default-source -d 5",
@@ -153,7 +132,7 @@
     
     "temperature": {
         "thermal-zone": 0,
-        "format": " {temperatureC}°C",
+        "format": "  {temperatureC}°C",
         "critical-threshold": 70,
         "format-critical": " {temperatureC}°C",
         "on-click": "kitty --start-as=fullscreen --title btop sh -c 'btop'"
@@ -161,7 +140,7 @@
 
     "network": {
         "on-click": "kitty nmtui", 
-        "format-wifi": "  {signalStrength}%",
+        "format-wifi": "   {signalStrength}%",
         "format-ethernet": "{ipaddr}/{cidr}",
         "tooltip-format": "{essid} - {ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP)",

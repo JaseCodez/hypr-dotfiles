@@ -15,10 +15,10 @@ window#waybar {
 tooltip {
     background: #1e1e2e;
     opacity: 0.8;
-    border-radius: 10px;
+    border-radius: 18px;
     border-width: 2px;
     border-style: solid;
-    border-color: #11111b;
+    border-color: #c8b6ff;
 }
 
 tooltip label{
@@ -32,39 +32,35 @@ tooltip label{
 }
 
 #workspaces button.active {
-    color: #a6adc8;
+    color: #cdd6f4;
+
 }
 
 #workspaces button.focused {
-    color: #a6adc8;
+    color: #cdd6f4;
     background: #eba0ac;
-    border-radius: 10px;
 }
 
 #workspaces button.urgent {
     color: #11111b;
     background: #a6e3a1;
-    border-radius: 10px;
+    border-radius: 18px;
 }
 
 #workspaces button:hover {
-    background: #11111b;
-    color: #cdd6f4;
-    border-radius: 10px;
+    background: #eb6f92;
+    color: #232136;
+    border-radius: 18px;
 }
 
 #custom-launch_wofi,
-#custom-lock_screen,
 #custom-light_dark,
-#custom-power_btn,
 #custom-power_profile,
 #custom-weather,
-#window,
 #custom-cava, 
 #clock,
 #battery,
 #pulseaudio,
-#tray,
 #temperature,
 #workspaces,
 #network, 
@@ -81,17 +77,29 @@ tooltip label{
     border-style: solid;
 }
 
-#window, #custom-flag, #network, #custom-lock_screen, #temperature, #backlight, #custom-launch_wofi {
-    border-radius: 10px 0px 0px 10px;
+#network, #temperature, #backlight, #custom-launch_wofi {
+    border-radius: 18px 0px 0px 18px;
+}
+
+#clock {
+    color: #f6c177;
+}
+
+#custom-cava, #custom-flag {
+    padding: 0px 15px 0px 15px;
 }
 
 #custom-cava {
-    border-radius: 10px;
+    color: #eb6f92;
+}
+
+#clock, #custom-weather, #custom-cava, #custom-flag {
+    border-radius: 18px;
     margin-right: 10px;
 }
 
-#window, #custom-light_dark, #custom-power_btn, #workspaces, #pulseaudio.microphone, #battery {
-    border-radius: 0px 10px 10px 0px;
+#custom-light_dark, #workspaces, #pulseaudio.microphone, #battery {
+    border-radius: 0px 18px 18px 0px;
     margin-right: 10px;
 }
 

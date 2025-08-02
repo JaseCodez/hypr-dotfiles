@@ -11,9 +11,9 @@ window#waybar {
 }
 
 tooltip {
-    background: #e7e7ec;
+    background: #faf4ed;
     opacity: 0.8;
-    border-radius: 10px;
+    border-radius: 18px;
     border-width: 2px;
     border-style: solid;
     border-color: #11111b;
@@ -30,30 +30,28 @@ tooltip label{
 }
 
 #workspaces button.active {
-    color: #a6adc8;
+    color: #2b2b2c;
 }
 
 #workspaces button.focused {
-    color: #a6adc8;
+    color: #c4a7e7;
     background: #eba0ac;
 }
 
 #workspaces button.urgent {
     color: #11111b;
     background: #a6e3a1;
-    border-radius: 10px;
+    border-radius: 18px;
 }
 
 #workspaces button:hover {
-    background: #11111b;
-    color: #cdd6f4;
-    border-radius: 10px;
+    background: #3e8fb0;
+    color: #fffaf3;
+    border-radius: 18px;
 }
 
 #custom-launch_wofi,
-#custom-lock_screen,
 #custom-light_dark,
-#custom-power_btn,
 #custom-power_profile,
 #custom-weather,
 #window,
@@ -61,34 +59,44 @@ tooltip label{
 #clock,
 #battery,
 #pulseaudio,
-#tray,
 #temperature,
 #workspaces,
 #network, 
 #bluetooth, 
 #custom-flag, 
 #backlight {
-    background: #e7e7ec;
+    background: #faf4ed;
     opacity: 0.8;
     padding: 0px 10px;
     margin: 3px 0px;
     margin-top: 10px;
-    border: 0;
-    border-color: #907aa9;
     border-style: solid;
 }
 
-#window, #custom-flag, #network, #custom-lock_screen, #temperature, #backlight, #custom-launch_wofi {
-    border-radius: 10px 0px 0px 10px;
+#clock {
+    color: #286983;
+    border-radius: 18px;
 }
 
 #custom-cava {
-    border-radius: 10px; 
+    color: #9ccfd8;
+}
+
+#custom-cava, #custom-flag {
+    padding: 0px 15px 0px 15px;
+}
+
+#network, #temperature, #backlight, #custom-launch_wofi {
+    border-radius: 18px 0px 0px 18px;
+}
+
+#custom-weather, #custom-cava, #custom-flag {
+    border-radius: 18px; 
     margin-right: 10px;
 }
 
-#window, #custom-light_dark, #custom-power_btn, #workspaces, #pulseaudio.microphone, #battery {
-    border-radius: 0px 10px 10px 0px;
+#custom-light_dark, #workspaces, #pulseaudio.microphone, #battery {
+    border-radius: 0px 20px 20px 0px;
     margin-right: 10px;
 }
 
@@ -126,10 +134,6 @@ tooltip label{
     color: #1d7715;
     border-left: 0px;
     border-right: 0px;
-}
-
-#window {
-    margin-right: 20px;
 }
 
 

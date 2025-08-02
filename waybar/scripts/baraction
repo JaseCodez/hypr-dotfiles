@@ -29,7 +29,8 @@ gsettings set org.gnome.desktop.interface icon-theme "Adwaita$SWITCHTO"
 
 #change the background image and be cool about it ;)
 pkill swaybg
-hyprctl dispatch -- exec swaybg -m fill -i ~/.config/hypr/wallpapers/wallpaper$SWITCHTO.jpg
+ln -sf ~/.config/hypr/wallpapers/images/wallpaper$SWITCHTO.jpg ~/.config/hypr/wallpapers/wallpaper.jpg
+hyprctl dispatch -- exec swaybg -m fill -i ~/.config/hypr/wallpapers/wallpaper.jpg
 
 #update the sddm image
 ln -sf /usr/share/sddm/themes/sdt/Backgrounds/wallpaper$SWITCHTO.jpg /usr/share/sddm/themes/sdt/wallpaper.jpg
