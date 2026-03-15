@@ -24,7 +24,8 @@
     "custom/cava": {
         "exec": "~/.config/waybar/scripts/cava.sh",
         "format": "{}", 
-        "on-click": "kitty cava"
+        "on-click": "kitty cava",
+        "tooltip": false
     }, 
 
     "custom/updates": {
