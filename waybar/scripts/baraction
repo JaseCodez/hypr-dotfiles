@@ -30,7 +30,7 @@ ln -sf ~/.config/hypr/wallpapers/themes/images$SWITCHTO/link "$BG_PATH"
 magick ~/.config/hypr/wallpapers/wallpaper.jpg -resize 2300x1294\> -quality 85 ~/.config/rofi/wallpaper.jpg
 cp ~/.config/rofi/wallpaper.jpg ~/.config/wlogout/wallpaper.jpg
 magick ~/.config/wlogout/wallpaper.jpg -blur 0x8 ~/.config/wlogout/wallpaper.jpg
-swww img "$BG_PATH" --transition-type any --transition-duration 2
+awww img "$BG_PATH" --transition-type any --transition-duration 2
 #update the sddm image
 ln -sf /usr/share/sddm/themes/sdt/Backgrounds/wallpaper$SWITCHTO.jpg /usr/share/sddm/themes/sdt/wallpaper.jpg
 # Hyprlock theme 

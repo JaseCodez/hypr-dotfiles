@@ -130,7 +130,7 @@
     
     "temperature": {
         "thermal-zone": 0,
-        "format": "  {temperatureC}°C",
+        "format": "   {temperatureC}°C",
         "critical-threshold": 70,
         "format-critical": " {temperatureC}°C",
         "on-click": "kitty btop"

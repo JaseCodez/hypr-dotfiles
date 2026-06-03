@@ -1,0 +1,17 @@
+local home = os.getenv("HOME")
+local wallpaper = home .. "/.config/hypr/wallpapers/wallpaper.jpg"
+
+hl.on("hyprland.start", function()
+    hl.dispatch(hl.dsp.exec_cmd(home .. "/.config/hypr/xdg-portal-hyprland"))
+    hl.dispatch(hl.dsp.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"))
+    hl.dispatch(hl.dsp.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"))
+    hl.dispatch(hl.dsp.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"))
+    hl.dispatch(hl.dsp.exec_cmd("waybar"))
+    hl.dispatch(hl.dsp.exec_cmd("hypridle"))
+    hl.dispatch(hl.dsp.exec_cmd("awww-daemon"))
+    hl.dispatch(hl.dsp.exec_cmd("awww img " .. wallpaper))
+    hl.dispatch(hl.dsp.exec_cmd("swaync"))
+    hl.dispatch(hl.dsp.exec_cmd("fcitx5"))
+    hl.dispatch(hl.dsp.exec_cmd("bongocat --config " .. home .. "/.config/bongocat.conf --watch-config"))
+    hl.dispatch(hl.dsp.exec_cmd(home .. "/.config/hypr/scripts/initial_boot.sh"))
+end)

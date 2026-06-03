@@ -31,12 +31,12 @@ set_wallpaper() {
     [ -z "$selected" ] && exit 0
     local selected_path="$WALLPAPER_DIR/$selected"
 
-    # Update symlink for swww
+    # Update symlink for awww
     ln -sf "$selected_path" "$WALLPAPER_DIR/link"
     ln -sf "$WALLPAPER_DIR/link" "$SYMLINK_PATH"
 
     # Set wallpaper
-    swww img "$SYMLINK_PATH" --transition-type any --transition-duration 3
+    awww img "$SYMLINK_PATH" --transition-type any --transition-duration 3
 
     # Optional: create preview for Rofi / wlogout
     magick "$SYMLINK_PATH" -resize 2300x1294\> -quality 85 "$PREVIEW_PATH"
