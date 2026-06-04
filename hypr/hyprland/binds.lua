@@ -41,8 +41,8 @@ local vimKeys = {
 -- Move focus with mainMod + vim keys
 for key, value in pairs(vimKeys) do
     hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ direction = value }))
-    hl.bind(mainMod .. " + SHIFT + " .. key, function() 
-        hl.dispatch(hl.dsp.window.move(value))
+    hl.bind(mainMod .. " + SHIFT + " .. key, function()
+        hl.dispatch(hl.dsp.window.move({ direction = value }))
     end)
 end
 

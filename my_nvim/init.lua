@@ -1,6 +1,2 @@
---vim.g.mapleader = " "
-
--- Other files
-require("keymaps")
+require("config.options")
 require("lazy-setup")
-require("classic_vim")
