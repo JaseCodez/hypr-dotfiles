@@ -1,84 +1,27 @@
+-- This file simply bootstraps the installation of Lazy.nvim and then calls other files for execution
+-- This file doesn't necessarily need to be touched, BE CAUTIOUS editing this file and proceed at your own risk.
+local lazypath = vim.env.LAZY or vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+
+if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
+  -- stylua: ignore
+  local result = vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+  if vim.v.shell_error ~= 0 then
+    -- stylua: ignore
+    vim.api.nvim_echo({ { ("Error cloning lazy.nvim:\n%s\n"):format(result), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } }, true, {})
+    vim.fn.getchar()
+    vim.cmd.quit()
+  end
+end
+
+vim.opt.rtp:prepend(lazypath)
+
+-- validate that lazy is available
+if not pcall(require, "lazy") then
+  -- stylua: ignore
+  vim.api.nvim_echo({ { ("Unable to load lazy from: %s\n"):format(lazypath), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } }, true, {})
+  vim.fn.getchar()
+  vim.cmd.quit()
+end
+
 require "lazy_setup"
-require "classic_vim"
 require "polish"
-
-
--- Disable completion plugin hijack of <Tab> in insert mode
-vim.keymap.set("i", "<Tab>", "<Tab>", { noremap = true, silent = true })
-vim.keymap.set("i", "<S-Tab>", "<S-Tab>", { noremap = true, silent = true })
-
-vim.keymap.del("i", "<Tab>")
-vim.keymap.del("s", "<Tab>")
-vim.keymap.del("i", "<S-Tab>")
-vim.keymap.del("s", "<S-Tab>")
-vim.snippet = nil
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "go",
-  callback = function()
-    vim.bo.expandtab = false
-    vim.bo.tabstop = 4
-    vim.bo.shiftwidth = 4
-    vim.bo.softtabstop = 4
-  end,
-})
-require("neo-tree").setup({
-  filesystem = {
-    filtered_items = {
-      visible = true, -- This is what you want: If you set this to `true`, all "hide" just mean "dimmed out"
-      hide_dotfiles = false,
-      hide_gitignored = true,
-    }
-  },
-  -- Set Neo-tree to use the Sorbet theme
-  window = {
-    position = "left",  -- Customize position if needed
-    width = 40,         -- Adjust window width if desired
-    theme = "catppuccin",   
-  },
-  -- Other Neo-tree settings...
-})
-
--- Apply the highlight and theme change after opening Neo-tree
-vim.api.nvim_create_autocmd("BufWinEnter", {
-  pattern = "*",  -- Applies to all buffers
-  callback = function()
-    -- Check if the current buffer is a Neo-tree buffer
-    if vim.bo.filetype == "neo-tree" then
-      -- Set Neo-tree to use the sorbet theme
-      vim.cmd("colorscheme catppuccin")
-      
-      -- Set Normal highlight to transparent background
-      vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
-    end
-  end,
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-  callback = function()
-    -- Clear all LSP formatting autocmds for the current buffer
-    pcall(function()
-      vim.api.nvim_clear_autocmds({ group = "lsp_auto_format", buffer = 0 })
-    end)
-    -- Cancel any format-on-save action
-    vim.b.disable_autoformat = true
-  end,
-})
-
--- Intercept AstroLSP's format function and make it do nothing if disabled
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    local bufnr = args.buf
-    vim.lsp.buf.format = function()
-      if vim.b.disable_autoformat then
-        return
-      end
-      pcall(vim.lsp.buf.format)
-    end
-  end,
-})
-
-return {
-  formatting = {
-    format_on_save = false,
-  },
-}

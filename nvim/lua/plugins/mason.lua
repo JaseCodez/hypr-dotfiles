@@ -1,37 +1,28 @@
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+
+-- Customize Mason
+
 ---@type LazySpec
-
 return {
-  "WhoIsSethDaniel/mason-tool-installer.nvim",
-  opts = {
-    ensure_installed = {
-      -- ╭───────────── LSPs ─────────────╮
-      "lua_ls",
-      "tsserver",
-      "cssls",
-      "bashls",
-      "dockerls",
-      "docker_compose_language_service",
-      "cmake",
-      "clangd",
-      "jdtls",
-      "sqlls",
+  -- use mason-tool-installer for automatically installing Mason packages
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    -- overrides `require("mason-tool-installer").setup(...)`
+    opts = {
+      -- Make sure to use the names found in `:Mason`
+      ensure_installed = {
+        -- install language servers
+        "lua-language-server",
 
-      -- ╭────────── Formatters ──────────╮
-      "prettier",        -- JS/TS/CSS/HTML/JSON formatter
-      "stylua",          -- Lua formatter
-      "shfmt",           -- Bash formatter
-      "clang-format",    -- C/C++/CMake formatter
-      "sql-formatter",   -- SQL formatter
-      "google-java-format", -- Java formatter
+        -- install formatters
+        "stylua",
 
-      -- ╭─────────── Linters ───────────╮
-      "eslint_d",        -- JS/TS linter
-      "shellcheck",      -- Bash linter
-      "hadolint",        -- Dockerfile linter
-      "cmakelint",       -- CMake linter
-      "sqlfluff",        -- SQL linter
+        -- install debuggers
+        "debugpy",
+
+        -- install any other package
+        "tree-sitter-cli",
+      },
     },
-    auto_update = true,
-    run_on_start = true,
   },
 }

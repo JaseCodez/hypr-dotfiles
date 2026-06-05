@@ -1,39 +1,24 @@
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+
+-- Customize None-ls sources
+
+---@type LazySpec
 return {
-  { "nvimtools/none-ls.nvim",
+  "nvimtools/none-ls.nvim",
   opts = function(_, opts)
-    local nls = require "null-ls"
-    opts.sources = vim.list_extend(opts.sources or {}, {
-      -- JavaScript / TypeScript
-      nls.builtins.formatting.prettier,
-      nls.builtins.diagnostics.eslint_d,
+    -- opts variable is the default configuration table for the setup function call
+    -- local null_ls = require "null-ls"
 
-      -- Lua
-      nls.builtins.formatting.stylua,
+    -- Check supported formatters and linters
+    -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/formatting
+    -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 
-      -- Bash
-      nls.builtins.formatting.shfmt,
-      nls.builtins.diagnostics.shellcheck,
-
-      -- Docker
-      nls.builtins.diagnostics.hadolint,
-
-      -- C / C++
-      nls.builtins.formatting.clang_format,
-
-      -- CMake
-      nls.builtins.diagnostics.cmake_lint,
-
-      -- SQL
-      nls.builtins.formatting.sql_formatter,
-      nls.builtins.diagnostics.sqlfluff,
-
-      -- Java
-      nls.builtins.formatting.google_java_format,
+    -- Only insert new sources, do not replace the existing ones
+    -- (If you wish to replace, use `opts.sources = {}` instead of the `list_insert_unique` function)
+    opts.sources = require("astrocore").list_insert_unique(opts.sources, {
+      -- Set a formatter
+      -- null_ls.builtins.formatting.stylua,
+      -- null_ls.builtins.formatting.prettier,
     })
-  end, }, 
-{
-  'mrcjkb/rustaceanvim',
-  version = '^6', -- Recommended
-  lazy = false, -- This plugin is already lazy
-}
+  end,
 }

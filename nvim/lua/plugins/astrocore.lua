@@ -1,4 +1,12 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
+-- Configuration documentation can be found with `:h astrocore`
+-- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
+--       as this provides autocomplete and documentation while editing
+
+---@type LazySpec
+return {
+  "AstroNvim/astrocore",
+  ---@type AstroCoreOpts
   opts = {
     -- Configure core features of AstroNvim
     features = {
@@ -61,12 +69,6 @@ if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
             )
           end,
           desc = "Close buffer from tabline",
-        },
-        ["<leader>ff"] = {
-          function()
-            require("snacks.picker.files"){ hidden = true }
-          end,
-          desc = "Find files (hidden included)",
         },
 
         -- tables with just a `desc` key will be registered with which-key if it's installed

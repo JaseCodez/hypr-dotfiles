@@ -1,12 +1,12 @@
 # AstroNvim Template
 
-**NOTE:** This is for AstroNvim v5+
+**NOTE:** This is for AstroNvim v6+
 
 A template for getting started with [AstroNvim](https://github.com/AstroNvim/AstroNvim)
 
 ## 🛠️ Installation
 
-#### Make a backup of your current nvim and shared folder
+### Make a backup of your current nvim and shared folder
 
 ```shell
 mv ~/.config/nvim ~/.config/nvim.bak
